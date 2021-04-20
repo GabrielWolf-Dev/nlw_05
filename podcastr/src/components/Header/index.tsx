@@ -1,11 +1,11 @@
 import styles from './style.module.scss';
 
 export default function Header() {
-    const currentDate = new Date().toLocaleDateString('BRL', { 
+    const currentDate = new Date().toLocaleDateString('BRL', {
         day: 'numeric',
         weekday: 'short',
-        month: 'long'
-     });
+        month: 'long',
+    });
 
     return(
         <header className={styles.headerContainer}>
