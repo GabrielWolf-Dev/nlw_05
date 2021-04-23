@@ -2,8 +2,10 @@ import { GetStaticProps } from 'next'; // Especificar a tipagem da função como
 import Link from 'next/link';
 import { api } from '../services/api';
 import Image from 'next/image';
+import { useContext } from 'react';
 
 import { durationToString } from '../utils/convertDuration';
+import { PlayerContext } from '../contexts/PlayerContext';
 
 import styles from './home.module.scss';
 
@@ -26,6 +28,8 @@ type Homeprops = {
 }
 
 export default function Home({ lastestEpisodes, allEpisodes }: Homeprops) {
+  const { play } = useContext(PlayerContext);
+
   return (
     <main className={styles.homepage}>
       <section className={styles.lastEpisodes}>
@@ -52,7 +56,7 @@ export default function Home({ lastestEpisodes, allEpisodes }: Homeprops) {
                     <span>{episode.durationAsString}</span>
                   </div>
 
-                  <button type="button">
+                  <button type="button" onClick={() => play(episode)}>
                     <img src="/svg/play-green.svg" alt="Tocar episódio" />
                   </button>
                 </li>
